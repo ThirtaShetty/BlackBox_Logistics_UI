@@ -1,0 +1,64 @@
+
+  .loads-container {
+    max-width: 900px;
+    margin: auto;
+    background: #fff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+  
+  .loads-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+  
+  .loads-header h2 {
+    margin: 0;
+  }
+  
+  .loads-header a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 500;
+  }
+  
+  .loads-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th {
+    text-align: left;
+    color: #666;
+    font-weight: 600;
+    padding-bottom: 12px;
+  }
+  
+  td {
+    padding: 16px 0;
+    vertical-align: top;
+    border-top: 1px solid #eee;
+  }
+
+  .cta-btn {
+    background: #007bff;
+    border: none;
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.2s ease;
+  }
+
+  .cta-btn:hover {
+    background: #0056b3;
+  }
+
+  
+  
+
+  

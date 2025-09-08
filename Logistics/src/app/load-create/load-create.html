@@ -1,0 +1,82 @@
+<div class="form-container">
+    <h2>Create Load </h2>
+    <form [formGroup]="loadForm" >
+  
+      <!-- Load Details -->
+      <fieldset>
+        <legend>Load Details</legend>
+        <label>Load Type 
+            <select formControlName="loadType">
+                <option>Small</option>
+                <option>Medium</option>
+                <option>Large</option>
+              </select>
+        </label>
+        <label>Weight <input type="number" step="0.01" formControlName="loadWeight"></label>
+      </fieldset>
+  
+      <!-- Pickup Details -->
+      <fieldset>
+        <legend>Pickup Details</legend>
+        <label>Name <input formControlName="pickupName"></label>
+        <label>Email <input type="email" formControlName="pickupEmailId"></label>
+        <label>Contact <input formControlName="pickupContactNo"></label>
+        <label>Pincode <input type="number" formControlName="pickupPincode" (input)="onPickupPincodeTyping($event)" ></label>
+        <label>Country <input formControlName="pickupCountry"></label>
+        <label>State <input formControlName="pickupState"></label>
+        <label>District <input formControlName="pickupDistrict"></label>
+        <label>City <input formControlName="pickupCity"></label>
+        <label>Address <input formControlName="pickupAddress"></label>
+      </fieldset>
+  
+      <!-- Drop Details -->
+      <fieldset>
+        <legend>Drop Details</legend>
+        <label>Name <input formControlName="dropName"></label>
+        <label>Email <input type="email" formControlName="dropEmailId"></label>
+        <label>Contact <input formControlName="dropContactNo"></label>
+        <label>Pincode <input type="number" formControlName="dropPincode" (input)="onDropPincodeTyping($event)"></label>
+        <label>Country <input formControlName="dropCountry"></label>
+        <label>State <input formControlName="dropState"></label>
+        <label>District <input formControlName="dropDistrict"></label>
+        <label>City <input formControlName="dropCity"></label>
+        <label>Address <input formControlName="dropAddress"></label>
+      </fieldset>
+  
+      <!-- Route & Hubspot -->
+      <fieldset>
+        <legend>Hubspot</legend>
+        <label>Pickup Hubspot <input formControlName="loadPickupHubspot"></label>
+        <label>Drop Hubspot <input formControlName="loadDropHubspot"></label>
+      </fieldset>
+
+      <!-- Payment Details -->
+      <fieldset>
+        <legend>Payment Details</legend>
+        <label>Status 
+          <select formControlName="loadPaymentStatus">
+            <option>Pending</option>
+            <option>Paid</option>
+            <option>Failed</option>
+          </select>
+        </label>
+        <label>Amount <input type="number" step="0.01" formControlName="loadPaymentAmount"></label>
+        <label>Mode 
+            <select formControlName="loadPaymentMode">
+                <option>Credit/Debit Card</option>
+                <option>UPI</option>
+                <option>Cash</option>
+                <option>NetBanking</option>
+              </select>
+        </label>
+      </fieldset>
+
+      <app-button 
+        label="Submit"
+        type = "submit"
+        [onClick]="createLoad">
+      </app-button>
+  
+    </form>
+  </div>
+  

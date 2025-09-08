@@ -1,0 +1,29 @@
+<div class="dispatcher-landing-container">
+    <div class="dispatcher-landing-card">
+      <div class="dispatcher-landing-header">
+        <h2>What's in your mind ?</h2>
+        <a href="/dispatcher-login" class="close-link">Close</a>
+    </div>
+
+        <div class = "dispatcher-landing-options">
+            <div style="display: flex; gap: 40px;">
+                <app-button 
+                    label="Create Load"
+                    type = "button"
+                    [onClick]="goToCreateLoadPage">
+                </app-button>
+                <app-button 
+                    label="Manage Routes"
+                    type = "button"
+                    [onClick]="goToManageRoutesPage">
+                </app-button>
+                <app-button 
+                    label="Manage Loads"
+                    type = "button"
+                    [onClick]="goToTrackLoadPage">
+                </app-button>
+            </div>
+        </div>
+        
+</div>
+  

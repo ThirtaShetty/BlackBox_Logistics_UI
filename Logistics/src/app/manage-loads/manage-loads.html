@@ -1,0 +1,40 @@
+<div class="loads-container">
+    <div class="loads-header">
+      <h2>Manage Loads</h2>
+      <a href="/dispatcher-landing">Close</a>
+    </div>
+  
+    <table class="loads-table">
+      <thead>
+        <tr>
+          <th >Load</th>
+          <th> Reg Date</th>
+          <th>Start Point</th>
+          <th>Destination Point</th>
+          <th>Load Type</th>
+          <th>Load Weight</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let load of loads">
+          <td>{{ load.loadId }}</td>
+          <td>{{ load.loadRegDateTime | date:'short' }}</td>
+          <td [innerHTML]="load.loadPickupHubspot"></td>
+          <td [innerHTML]="load.loadDropHubspot"></td>
+          <td [innerHTML]="load.loadType"></td>
+          <td [innerHTML]="load.loadWeight"></td>
+          <td>{{ load.loadStatus }}</td>
+          <td>
+            <button 
+            class="cta-btn"
+              type = "button"
+              (click)="assignLoad(load)">Assign
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

@@ -1,0 +1,80 @@
+
+  .routes-container {
+    max-width: 1200px;
+    margin: auto;
+    background: var(--card);
+    padding: 24px;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+  
+  .routes-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .routes-header h2 {
+    margin: 0;
+    font-size: 28px;
+  }
+  
+  .routes-header a {
+    color: var(--text);
+    text-decoration: underline;
+    font-weight: 600;
+  }
+  
+  .routes-table-wrap {
+    overflow-x: auto;
+  }
+  
+  .routes-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1000px;
+  }
+  
+   th {
+    text-align: left;
+    color: var(--muted);
+    font-weight: 600;
+    padding: 12px 0;
+    white-space: nowrap;
+  }
+  
+   td {
+    padding: 18px 0;
+    vertical-align: top;
+    border-top: 1px solid var(--line);
+  }
+
+  td.clickable {
+    cursor: pointer;
+    color: #1e66ff;
+    text-decoration: underline;
+  }
+
+
+//   th {
+//     text-align: left;
+//     color: #666;
+//     font-weight: 600;
+//     padding-bottom: 12px;
+//   }
+  
+//   td {
+//     padding: 16px 0;
+//     vertical-align: top;
+//     border-top: 1px solid #eee;
+//   }
+  
+  .mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  }
+  
+  .wrap {
+    white-space: pre-line;
+  }
+  

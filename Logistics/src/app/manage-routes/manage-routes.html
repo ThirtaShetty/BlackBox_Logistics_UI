@@ -1,0 +1,35 @@
+<div class="routes-container">
+    <div class="routes-header">
+      <h2>Manage Routes</h2>
+      <a href="/dispatcher-landing">Close</a>
+    </div>
+  
+    <div class="routes-table-wrap">
+      <table class = "routes-table">
+        <thead>
+          <tr>
+            <th class="wrap">Route ID</th>
+            <th class="wrap">Load IDs</th>
+            <th class="wrap">Total Weight</th>
+            <th class="wrap">Truck Driver Details</th>
+            <th class="wrap">Pickup Point</th>
+            <th class="wrap">Drop Point</th>
+            <th class="wrap">Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let route of routes">
+            <td class="clickable" (click)="goToRouteDetails(route.routeId)">{{ route.routeId }}</td>
+            <td class="wrap">{{ route.routeLoadIds }}</td>
+            <td class="wrap">{{ route.routeTotalWeight }}</td>
+            <td class="wrap">{{ route.routeDriverName }} ({{ route.routeDriverContact }})</td>
+            <td class="wrap">{{ route.routeStartHubspot }}</td>
+            <td class="wrap">{{ route.routeEndHubspot }}</td>
+            <td class="wrap">{{ route.routeStatus }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+  </div>
+  

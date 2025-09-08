@@ -1,0 +1,25 @@
+<div class="card">
+<a href="/manage-routes" class="close-link">Close</a>
+
+<div class="top">
+    <div class="title">
+    <h1 class="route">{{ route.routeId }}</h1>
+    <h2 class="loads">Loads - {{ loadsCount }}</h2>
+    </div>
+
+    <div class="actions">
+    <div class="status">Route Status: {{ route.routeStatus }}</div>
+    <app-button *ngIf= "showAssignButton" label = "Assign Truck" [onClick]="assignTruck"></app-button>
+    </div>
+</div>
+
+<div class="stops">
+    <div class="stop" *ngFor="let stop of stops">
+    <div class="label">{{ stop.label }}</div>
+    <div class="hub">{{ stop.hub }}</div>
+    </div>
+</div>
+</div>
+
+<app-manage-loads></app-manage-loads>
+  

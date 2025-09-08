@@ -1,0 +1,27 @@
+<div class="login-container">
+    <div class="login-card">
+      <div class="login-header">
+        <h2>Hello, {{identity}} ! Sign In</h2>
+        <a href="/welcome" class="close-link">Close</a>
+      </div>
+  
+      <form class="login-form">
+        <input type="text" placeholder="User Id" />
+        <div style="display: flex; gap: 10px;">
+            <app-button 
+                label="Continue"
+                type = "button"
+                [onClick]="onLoginSubmit">
+            </app-button>
+            <app-button 
+                label="Sign Up"
+                type = "button"
+                *ngIf="identity === 'Trucker'"
+                [onClick]="onRegister">
+            </app-button>
+        </div>
+        
+      </form>
+    </div>
+</div>
+  

@@ -1,0 +1,21 @@
+.custom-btn {
+    background-color: #007bff; // blue
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  
+    &:hover:not(:disabled) {
+      background-color: #0056b3;
+    }
+  
+    &:disabled {
+      background-color: #a0a0a0;
+      cursor: not-allowed;
+    }
+  }
+  
