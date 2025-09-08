@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Button } from '../shared/button/button';
 import { CommonModule } from '@angular/common';
 import { Pincode } from '../service/pincode';
+import { AssignmentApis } from '../service/assignment-apis';
+import { LoadApis } from '../service/load-apis';
 
 @Component({
   selector: 'app-load-create',
@@ -13,12 +15,13 @@ import { Pincode } from '../service/pincode';
 export class LoadCreate {
   loadForm:FormGroup
   apiUrl: string = 'https://api.postalpincode.in/pincode/';
-  constructor(private fb: FormBuilder, private pincodeService: Pincode) {
+  constructor(private fb: FormBuilder, private pincodeService: Pincode,private assignmentApis : AssignmentApis, private loadApis: LoadApis) {
 
     this.loadForm = this.fb.group({
       // Load details
-      loadRegDatetime: ['', Validators.required],
-      loadType: ['', [Validators.required, Validators.maxLength(1)]],
+      loadId: ['', Validators.required],
+      loadRegDateTime: ['', Validators.required],
+      loadType: ['', [Validators.required, Validators.maxLength(10)]],
       loadWeight: [''],
       loadStatus: ['UnAssigned', Validators.required],
 
@@ -62,12 +65,20 @@ export class LoadCreate {
         (response) => {
           if (response && response[0] && response[0].Status === 'Success') {
             const postOfficeData = response[0].PostOffice[0];
-            this.loadForm.patchValue({
-              pickupCountry: postOfficeData.Country,
-              pickupState: postOfficeData.State,
-              pickupDistrict: postOfficeData.District,
-              pickupCity: postOfficeData.Name || postOfficeData.Region || '',
-            });
+            this.assignmentApis.getHubspotName(pincode).subscribe(
+              (res)=>{
+                if(res != null){
+                  this.loadForm.patchValue({
+                    pickupCountry: postOfficeData.Country,
+                    pickupState: postOfficeData.State,
+                    pickupDistrict: postOfficeData.District,
+                    pickupCity: postOfficeData.Name || postOfficeData.Region || '',
+                    loadPickupHubspot: res
+                  });
+                }
+              }
+            );
+            
           } 
           else {
             alert('Invalid Pincode');
@@ -87,12 +98,20 @@ export class LoadCreate {
         (response) => {
           if (response && response[0] && response[0].Status === 'Success') {
             const postOfficeData = response[0].PostOffice[0];
-            this.loadForm.patchValue({
-              dropCountry: postOfficeData.Country,
-              dropState: postOfficeData.State,
-              dropDistrict: postOfficeData.District,
-              dropCity: postOfficeData.Name || postOfficeData.Region || '',
-            });
+            this.assignmentApis.getHubspotName(pincode).subscribe(
+              (res)=>{
+                if(res != null){
+                this.loadForm.patchValue({
+                  dropCountry: postOfficeData.Country,
+                  dropState: postOfficeData.State,
+                  dropDistrict: postOfficeData.District,
+                  dropCity: postOfficeData.Name || postOfficeData.Region || '',
+                  loadDropHubspot: res
+              }
+            );
+          }
+        }
+      );
           } 
           else {
             alert('Invalid Pincode');
@@ -107,10 +126,20 @@ export class LoadCreate {
 
 
   createLoad=()=>{
+    this.loadForm.patchValue({
+      loadId: 'LOAD-' + Math.floor(1000 + Math.random() * 90).toString(),
+      loadRegDateTime: new Date().toISOString(),
+      loadStatus: 'UnAssigned'   
+  })
     if(this.loadForm.valid){
       console.log(this.loadForm.value);
-      alert('Load Created Successfully!');
-      this.loadForm.reset();
+      this.loadApis.createLoad(this.loadForm.value).subscribe(
+        (response)=> {
+          if(response){
+            alert(response.message);
+          }
+        }
+      )
     } 
     else {
       alert('Please fill all required fields correctly.');

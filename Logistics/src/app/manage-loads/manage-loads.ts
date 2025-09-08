@@ -3,6 +3,7 @@ import { Button } from '../shared/button/button';
 import { CommonModule } from '@angular/common';
 import { LoadApis } from '../service/load-apis';
 import { AssignmentApis } from '../service/assignment-apis';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-manage-loads',
@@ -13,7 +14,7 @@ import { AssignmentApis } from '../service/assignment-apis';
 export class ManageLoads {
 
   loads : any;
-  constructor(private loadApis : LoadApis, private assignmentApis : AssignmentApis){
+  constructor(private loadApis : LoadApis, private assignmentApis : AssignmentApis, private router:Router){
    
     this.loadApis.getLoadDetailsForStatus("UnAssigned").subscribe(
       (response) => {
@@ -34,13 +35,13 @@ export class ManageLoads {
       loadWeight: String(load.loadWeight),
       loadPickupHubspotPincode : String(load.loadPickupHubspotPincode),
       loadDropHubspotPincode : String(load.loadDropHubspotPincode)
-
     }
     this.assignmentApis.assignLoadsToRoute(assignObject).subscribe(
       (response)=>{
-        if(response)
+        alert(response.message);
+        if(response.isSuccess)
         {
-          alert(response.message);
+          this.router.navigateByUrl("/manage-routes")
         }
       }
     )

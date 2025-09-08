@@ -83,7 +83,7 @@ export class TruckerRegistration {
           if (response && response[0] && response[0].Status === 'Success') {
             const postOfficeData = response[0].PostOffice[0];
             this.assignmentApis.getHubspotName(pincode).subscribe(
-              (res)=>{
+              (res: string)=>{
                 if(res != null){
                   this.truckForm.patchValue({
                     currentLocationCountry: postOfficeData.Country,
